@@ -1,0 +1,4 @@
+services:
+  agiledrop_challenge.event_countdown_service:
+    class: Drupal\agiledrop_challenge\Service\EventCountdownService
+    arguments: []

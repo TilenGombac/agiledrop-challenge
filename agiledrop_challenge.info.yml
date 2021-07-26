@@ -1,0 +1,4 @@
+name: Agiledrop Challenge
+description: A module to display how many days are left until an event starts
+type: module
+core_version_requirement: ^9
