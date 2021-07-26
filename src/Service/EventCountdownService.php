@@ -15,8 +15,22 @@ class EventCountdownService {
     }
 
     public function getDaysUntil($dateUTC) {
-        $diff = strtotime($dateUTC) - time();
+        $now   = new \DateTime(gmdate('c', time()));
+        $event = new \DateTime(date('c', strtotime($dateUTC)));
 
-        return round($diff / (60 * 60 * 24));
+        $diff = $now->diff($event)->days;
+
+        // If dates are less than 12 hours apart, diff will return 0,
+        // even though the days may (still) be different
+        if($diff == 0 && $now->format('d') !== $event->format('d')) {
+            $diff = 1;
+        }
+
+        // DateTime diff returns absolute
+        if($now > $event) {
+            $diff *= -1;
+        }
+
+        return $diff;
     }
 }

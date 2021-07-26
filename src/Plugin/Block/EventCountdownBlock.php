@@ -32,6 +32,8 @@ class EventCountdownBlock extends BlockBase {
         $output = '';
         if($daysUntil == 0) {
             $output = 'This event is happening today';
+        } elseif($daysUntil == 1) {
+            $output = $daysUntil . ' day left until event starts';
         } elseif($daysUntil > 0) {
             $output = $daysUntil . ' days left until event starts';
         } else {
